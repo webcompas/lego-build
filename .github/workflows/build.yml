@@ -28,6 +28,8 @@ jobs:
         LATEST_TAG=$(git describe --tags --abbrev=0)
         echo "Checking out latest tag $LATEST_TAG"
         git checkout $LATEST_TAG
+        echo "Set CGO_ENABLED=1 to enabling dymanic linking"
+        sed 's|^export.*CGO_ENABLED.*$|export CGO_ENABLED=1|g' Makefile
         make build
         ./dist/lego --version
       
