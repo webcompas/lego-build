@@ -24,6 +24,9 @@ jobs:
 
     - name: Build
       run: |
+        LATEST_TAG=$(git describe --tags --abbrev=0)
+        echo "Checking out latest tag $LATEST_TAG"
+        git checkout $LATEST_TAG
         make build
         ./dist/lego --version
       
