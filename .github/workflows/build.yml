@@ -24,7 +24,6 @@ jobs:
 
     - name: Build
       run: |
-        make
         make build
         ./dist/lego --version
       
